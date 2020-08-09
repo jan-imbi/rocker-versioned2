@@ -25,9 +25,20 @@ tlmgr update --self
 tlmgr install latex-bin luatex xetex
 tlmgr install ae bibtex context inconsolata listings makeindex metafont mfware parskip pdfcrop tex tools url xkeyval
 
+
+apt-get update && apt-get -y install texlive-fonts-recommended -y --no-install-recommends && \
+apt-get -y install texlive-fonts-recommended -y --no-install-recommends
+
+
+tlmgr install collection-fontsrecommended collection-fontsextra fancyvrb epstopdf preprint hyperref pdftexcmds kvoptions infwarerr amsmath oberdiek 
+
+
+# tlmgr install texlive-fonts-recommended  fullpage
+
 ## do not add to /usr/local/bin
-# tlmgr path add
+tlmgr path add
 # instead, we keep binaries separate and add to PATH
+
 echo "PATH=${PATH}" >> ${R_HOME}/etc/Renviron
 
 ## open permissions to avoid needless warnings

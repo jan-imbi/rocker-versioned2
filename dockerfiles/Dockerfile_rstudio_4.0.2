@@ -15,6 +15,16 @@ RUN /rocker_scripts/install_pandoc.sh
 
 EXPOSE 8787
 
+RUN /rocker_scripts/install_tidyverse.sh
+
+
+ENV CTAN_REPO=http://mirror.ctan.org/systems/texlive/tlnet
+ENV PATH=/usr/local/texlive/bin/x86_64-linux:$PATH
+
+
+RUN /rocker_scripts/install_verse.sh
+
+
 CMD ["/init"]
 
 

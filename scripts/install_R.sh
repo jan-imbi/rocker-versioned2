@@ -4,8 +4,8 @@ set -e
 apt-get update && apt-get -y install lsb-release
 
 UBUNTU_VERSION=${UBUNTU_VERSION:-`lsb_release -sc`}
-LANG=${LANG:-en_US.UTF-8}
-LC_ALL=${LC_ALL:-en_US.UTF-8}
+# LANG=${LANG:-en_US.UTF-8}
+# LC_ALL=${LC_ALL:-en_US.UTF-8}
 CRAN=${CRAN:-https://cran.r-project.org}
 
 ##  mechanism to force source installs if we're using RSPM
@@ -51,11 +51,14 @@ apt-get update \
     make \
     unzip \
     zip \
-    zlib1g
+    zlib1g \
+	tk \
+	nano \
+	locate
 
-echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-locale-gen en_US.utf8
-/usr/sbin/update-locale LANG=en_US.UTF-8
+# echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+# locale-gen en_US.utf8
+# /usr/sbin/update-locale LANG=en_US.UTF-8
 
 BUILDDEPS="curl \
     default-jdk \
@@ -103,6 +106,8 @@ else                                                                 \
 fi &&                                                                \
     tar xzf R-${R_VERSION}.tar.gz &&   
 
+mkdir /R-${R_VERSION}/logs
+
 cd R-${R_VERSION}
 R_PAPERSIZE=letter \
 R_BATCHSAVE="--no-save --no-restore" \
@@ -123,10 +128,14 @@ CXXFLAGS="-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdat
 		   --with-lapack \
 		   --with-tcltk \
 		   --disable-nls \
-		   --with-recommended-packages
-make
+		   --with-recommended-packages 2>&1 | tee /R-${R_VERSION}/logs/configure.log
+		   
+make 2>&1 | tee /R-${R_VERSION}/logs/make.log
 make install
-make clean
+
+sed -i 's/stopifnot(is.na( print(vapply(nTypes, norm, 0., x = m)) )) /## stopifnot(is.na( print(vapply(nTypes, norm, 0., x = m)) ))/g' /R-${R_VERSION}/tests/reg-tests-1d.R
+
+## make clean
 
 ## Add a default CRAN mirror
 echo "options(repos = c(CRAN = '${CRAN}'), download.file.method = 'libcurl')" >> ${R_HOME}/etc/Rprofile.site
@@ -153,11 +162,11 @@ ln -s ${R_HOME}/site-library/littler/bin/r /usr/local/bin/r
 
 
 ## Clean up from R source install
-cd /
-rm -rf /tmp/*
-rm -rf R-${R_VERSION}
-rm -rf R-${R_VERSION}.tar.gz
-apt-get remove --purge -y $BUILDDEPS
+## cd /
+## rm -rf /tmp/*
+## rm -rf R-${R_VERSION}
+## rm -rf R-${R_VERSION}.tar.gz
+## apt-get remove --purge -y $BUILDDEPS
 apt-get autoremove -y
 apt-get autoclean -y
 rm -rf /var/lib/apt/lists/*

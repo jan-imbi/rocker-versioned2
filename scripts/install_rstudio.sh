@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-
 apt-get update
 apt-get install -y --no-install-recommends \
     file \
@@ -121,6 +120,3 @@ mkdir -p /home/rstudio/.rstudio/monitored/user-settings \
 
 ## 
 git config --system credential.helper 'cache --timeout=3600'
-
-
-
