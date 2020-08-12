@@ -1,4 +1,4 @@
-FROM imbir:texlive-full
+FROM janmeisimbi/imbir:texlive-full
 
 
 ENV TZ=""
