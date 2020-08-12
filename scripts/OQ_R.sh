@@ -8,7 +8,7 @@ LC_COLLATE="C"
 LC_TIME="C"
 
 cd /R-${R_VERSION}
-make check-all 2>&1 | tee /R-${R_VERSION}/logs/OQ.log
+make check-all 2>&1 | tee /R-${R_VERSION}/logs/OQ_base.log
 
 
 
