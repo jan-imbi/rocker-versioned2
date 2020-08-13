@@ -23,7 +23,7 @@ services:
     image: janmeisimbi/imbir:packages
     depends_on:
     - Rstudio
-    build:
+    build --build-arg AUTH_TOKEN=<enter access token here>:
       context: ..
       dockerfile: packages.Dockerfile
   oqbase:
@@ -33,10 +33,10 @@ services:
     build:
       context: ..
       dockerfile: oqbase.Dockerfile
-  validate:
-    image: janmeisimbi/imbir:validate
+  production:
+    image: janmeisimbi/imbir:production
     depends_on:
     - oqbase
     build:
       context: ..
-      dockerfile: validate.Dockerfile
+      dockerfile: production.Dockerfile
