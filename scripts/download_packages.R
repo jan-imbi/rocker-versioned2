@@ -1,6 +1,6 @@
 pkg_list <- c("mice", "Exact", "MatchIt", "lme4", "lmerTest", "survminer",
               "netmeta", "meta", "pwr", "binom", "mvtnorm", "Matching", "pROC", "ROCR", "Hmisc",
-              "adoptr", "rpact", "rjags", "kable", "dfoptim", "optimx")
+              "adoptr", "rpact", "rjags", "kableExtra", "dfoptim", "optimx")
 
 # pkg_list <- "MatchIt"
 
