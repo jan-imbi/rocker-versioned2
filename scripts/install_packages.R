@@ -16,6 +16,7 @@ install.packages("pwr", repos = "cran.r-project.org", upgrade=F)
 install.packages("adoptr", repos = "cran.r-project.org", upgrade=F)
 install.packages("kableExtra", repos = "cran.r-project.org", upgrade=F)
 install.packages("optimx", repos = "cran.r-project.org", upgrade=F)
+install.packages("gtools", repos = "cran.r-project.org", upgrade=F)
 
 
 pkg_paths <- sapply(pkg_list, function(x)paste0("/pkgs/", x))
