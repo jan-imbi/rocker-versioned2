@@ -1,17 +1,23 @@
-FROM imbir:Rstudio
+FROM janmeisimbi/imbir:Rstudio
 
 ARG AUTH_TOKEN
 
+RUN mkdir /home/rstudio/pkgs
+
+RUN chown -R rstudio /home/rstudio/pkgs
+RUN chmod -R 777 /home/rstudio/pkgs
+
+
+
 COPY scripts /rocker_scripts
-
-RUN apt-get update && apt-get install acl -y
-RUN mkdir /pkgs
-RUN setfacl -R -m u:rstudio:rwx /pkgs
-RUN setfacl -R -m u:rstudio:rwx /R-${R_VERSION}
-RUN setfacl -R -m u:rstudio:rwx /tmp
-
 RUN /rocker_scripts/install_packages.sh
 
-RUN Rscript -e 'saveRDS(installed.packages(), "/pkgs/installed_packages.rds")'
+USER rstudio
+RUN cd /home/rstudio/pkgs && \
+	Rscript /rocker_scripts/download_packages.R && \
+	for f in *.tar.gz; do tar xf "$f"; done && \
+	rm *.tar.gz
+	
+USER root
 
 CMD ["/init"]
