@@ -1,6 +1,7 @@
 
 
-pkg_list <- c(c("mice", "lme4", "lmerTest","survminer", "rpact", "Exact", "DescTools"), c("mitml", "optimx", "dfoptim", "broom.mixed", "lmtest"))
+pkg_list <- c(c("mice", "lme4", "lmerTest","survminer", "rpact", "Exact", "DescTools", "xtable", "flextable", "kableExtra"),
+              c("mitml", "optimx", "dfoptim", "broom.mixed", "lmtest"))
 
 install.packages(pkg_list, dependencies=NA, repos="cran.r-project.org", upgrade=F)
 withr::with_libpaths("/usr/local/lib/R/site-library", devtools::install("/home/rstudio/pkgs/DescrTab", dependencies=NA, repos="cran.r-project.org", upgrade=F))
