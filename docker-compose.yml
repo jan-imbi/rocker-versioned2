@@ -1,0 +1,42 @@
+version: '3'
+services:
+  texlive-full:
+    image: janmeisimbi/imbir:texlive-full
+    build:
+      context: .
+      dockerfile: tex.Dockerfile
+  R-base:
+    image: janmeisimbi/imbir:R-base
+    depends_on:
+    - texlive-full
+    build:
+      context: .
+      dockerfile: R.Dockerfile
+  Rstudio:
+    image: janmeisimbi/imbir:Rstudio
+    depends_on:
+    - R-base
+    build:
+      context: .
+      dockerfile: Rstudio.Dockerfile
+  packages:
+    image: janmeisimbi/imbir:packages
+    depends_on:
+    - Rstudio
+    build:
+      context: .
+      dockerfile: packages.Dockerfile
+  oqbase:
+    image: janmeisimbi/imbir:oqbase
+    depends_on:
+    - packages
+    build:
+      context: .
+      dockerfile: oqbase.Dockerfile
+  production:
+    image: janmeisimbi/imbir:production
+    depends_on:
+    - oqbase
+    build:
+      context: .
+      dockerfile: production.Dockerfile

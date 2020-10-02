@@ -1,4 +1,4 @@
-FROM imbir:packages
+FROM janmeisimbi/imbir:packages
 
 
 COPY scripts /rocker_scripts

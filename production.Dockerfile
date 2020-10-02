@@ -1,4 +1,4 @@
-FROM imbir:oqbase
+FROM janmeisimbi/imbir:oqbase
 
 
 COPY scripts /rocker_scripts

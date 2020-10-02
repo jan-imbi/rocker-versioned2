@@ -1,0 +1,16 @@
+./dos2unix ./copy_files_for_validation.sh
+./dos2unix ./default_user.sh
+./dos2unix ./install_packages.sh
+./dos2unix ./install_pandoc.sh
+./dos2unix ./install_python.sh
+./dos2unix ./install_R.sh
+./dos2unix ./install_R_ppa.sh
+./dos2unix ./install_rstudio.sh
+./dos2unix ./install_s6init.sh
+./dos2unix ./install_texlive.sh
+./dos2unix ./install_tidyverse.sh
+./dos2unix ./install_verse.sh
+./dos2unix ./OQ_R.sh
+./dos2unix ./pam-helper.sh
+./dos2unix ./rsession.sh
+./dos2unix ./userconf.sh

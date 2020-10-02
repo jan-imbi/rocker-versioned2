@@ -1,4 +1,4 @@
-FROM imbir:R-base
+FROM janmeisimbi/imbir:R-base
 
 
 ENV CRAN=https://packagemanager.rstudio.com/all/__linux__/focal/latest
