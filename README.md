@@ -14,9 +14,9 @@ tex < R < Rstudio < packages < oqbase < production
 
 You can compile everything in order using the docker-compose instructions:
 
-´´
+``` docker
 docker-compose build --build-arg AUTH_TOKEN=<auth token with full access to https://github.com/imbi-heidelberg>
-´´
+```
 
 
 tex.Dockerfile installs texlive-full via apt-get. texlive-full is needed to pass all the tests in the operational qualificaion (oqbase). I can't get this to work with a slimmer tex distribution. The rocker project installs tex after compiling R, but we do it the other way around.
