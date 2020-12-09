@@ -13,7 +13,7 @@ RUN apt-get -qq update && \
 
 RUN locale-gen en_US.UTF-8 
 	
-ENV R_VERSION=4.0.2
+ENV R_VERSION=4.0.3
 ENV TERM=xterm
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8

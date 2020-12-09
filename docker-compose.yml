@@ -26,8 +26,6 @@ services:
     build:
       context: .
       dockerfile: packages.Dockerfile
-      args:
-        AUTH_TOKEN: 9c1fa341d50a89293d3debe9c5697e2689bc88a9
   oqbase:
     image: janmeisimbi/imbir:oqbase
     depends_on:

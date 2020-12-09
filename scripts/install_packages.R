@@ -6,7 +6,7 @@ namespace_packages_stats <- c("car", "coxme", "DescTools", "emmeans", "exact2x2"
 
 namespace_packages_util <- c("ggpubr", "viridisLite",  "RColorBrewer", "xtable", "flextable", "kableExtra", "here")
 
-validation_packages <- c("mitml", "optimx", "Exact", "dfoptim", "broom.mixed", "lmtest", "kinship2")
+validation_packages <- c("mitml", "optimx", "Exact", "dfoptim", "broom.mixed", "lmtest", "kinship2", "mnormt", "shiny")
 
 pkg_list <- c(namespace_packages_stats, namespace_packages_util, validation_packages)
 
