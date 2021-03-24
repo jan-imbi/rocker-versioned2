@@ -1,0 +1,3 @@
+sudo apt-get install acl
+sudo setfacl -Rdm o:rwX /home/projectname
+sudo setfacl -Rm o:rwX /home/projectname
